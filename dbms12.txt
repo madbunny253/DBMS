@@ -1,21 +1,17 @@
 mysql> create table pet(
     -> petname varchar(20),owner varchar(20),sex varchar(20),bdate date,ddate date);
-Query OK, 0 rows affected (0.03 sec)
 
 mysql> insert into pet values('pet1','owner1','male','2022-10-11','2023-05-06');
-Query OK, 1 row affected (0.01 sec)
+
 
 mysql> insert into pet values('pet2','owner1','female','2022-10-11','2023-04-06');
-Query OK, 1 row affected (0.01 sec)
+
 
 mysql> insert into pet values('pet3','owner2','male','2022-10-11','2023-04-07');
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into pet values('pet4','owner1','male','2020-10-11','2021-04-07');
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into pet values('pet5','owner3','female','2020-10-11','2021-10-11');
-Query OK, 1 row affected (0.01 sec)
 
 2) Display all the pets information. 
 
