@@ -8,27 +8,23 @@ CREATE TABLE Library (
 );
 
 CREATE TABLE Library_Audit (
-  Audit_ID INT AUTO_INCREMENT PRIMARY KEY,
-  Action VARCHAR(10),
   Book_ISBN INT,
   Old_Title VARCHAR(255),
   Old_Publisher_Name VARCHAR(255),
   Old_Price DECIMAL(10, 2),
   Old_Date_Of_Publication DATE,
-  Old_Book_Copy INT,
-  Audit_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  Old_Book_Copy INT
 );
 
 DELIMITER //
-CREATE TRIGGER Library_Trigger
-AFTER UPDATE OR DELETE ON Library
+
+CREATE TRIGGER backup_trigger
+AFTER DELETE ON Library
 FOR EACH ROW
 BEGIN
-  IF OLD.Title IS NOT NULL THEN INSERT INTO VALUES ('UPDATE', OLD.Book_ISBN, OLD.Title, OLD.Publisher_Name, OLD.Price, OLD.Date_Of_Publication, OLD.Book_Copy);
-  ELSE INSERT INTO VALUES ('DELETE', OLD.Book_ISBN, OLD.Title, OLD.Publisher_Name, OLD.Price,OLD.Date_Of_Publication, OLD.Book_Copy);
-  END IF;
-END;
-//
+  INSERT INTO Library_Audit VALUES (OLD.Book_ISBN, OLD.Title, OLD.Publisher_Name, OLD.Price, OLD.Date_Of_Publication, OLD.Book_Copy);
+END//
+
 DELIMITER ;
 
 INSERT INTO Library (Book_ISBN, Title, Publisher_Name, Price, Date_Of_Publication, Book_Copy)
