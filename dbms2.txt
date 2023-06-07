@@ -1,26 +1,20 @@
-mysql> use demo1;
-Database changed
 mysql> create table emp(
-    -> eno int primary key,
-    -> ename varchar(20),
-    -> bdate date,
-    -> title varchar(20),
-    -> salary decimal(10.2),
-    -> dno int
-    -> );
-Query OK, 0 rows affected (0.03 sec)
+     eno int primary key,
+     ename varchar(20),
+     bdate date,
+     title varchar(20),
+     salary decimal(10.2),
+     dno int
+     );
+
 
 mysql> insert into emp values(1,'Isha','2003-1-09','EE','45000.00',2);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into emp values(2,'Pisha','2003-2-09','SA','25000.00',3);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into emp values(3,'Tisha','2003-3-09','EE','55000.00',4);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into emp values(4,'Disha','2003-4-09','TT','65000.00',5);
-Query OK, 1 row affected (0.01 sec)
 
 
 mysql> create table proj(
@@ -29,16 +23,12 @@ mysql> create table proj(
     -> budget decimal(10.2),
     -> dno int
     -> );
-Query OK, 0 rows affected (0.01 sec)
 
 mysql> insert into proj values(1,'WEB1','200000',2);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into proj values(2,'WEB2','150000',3);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into proj values(3,'WEB3','90000',4);
-Query OK, 1 row affected (0.01 sec)
 
 
 mysql> create table dept(
@@ -46,16 +36,12 @@ mysql> create table dept(
     -> dname varchar(20),
     -> mgreno int
     -> );
-Query OK, 0 rows affected (0.01 sec)
 
 mysql> insert into dept values(2,'D1',1);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into dept values(3,'D2',2);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into dept values(4,'D3',3);
-Query OK, 1 row affected (0.00 sec)
 
 
 mysql> create table workson(
@@ -63,23 +49,17 @@ mysql> create table workson(
     -> pno int,
     -> hours int
     -> );
-Query OK, 0 rows affected (0.03 sec)
 
 mysql> insert into workson values(1,1,9);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into workson values(2,1,8);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into workson values(2,2,7);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into workson values(3,2,7);
-Query OK, 1 row affected (0.01 sec)
 
 
 mysql> drop table workson;
-Query OK, 0 rows affected (0.01 sec)
 
 
 
@@ -91,28 +71,20 @@ mysql> create table workson(
     -> foreign key(eno) references emp(eno),
     -> foreign key(pno) references proj(pno)
     -> );
-Query OK, 0 rows affected (0.03 sec)
 
 mysql>  insert into workson values(1,1,9);
-Query OK, 1 row affected (0.01 sec)
 
 mysql>  insert into workson values(2,1,8);
-Query OK, 1 row affected (0.01 sec)
 
 mysql>  insert into workson values(2,2,7);
-Query OK, 1 row affected (0.01 sec)
 
 mysql> delete from workson where hours=7;
-Query OK, 1 row affected (0.01 sec)
 
 mysql> delete from workson where hours=9;
-Query OK, 1 row affected (0.00 sec)
 
 mysql>  insert into workson values(1,2,7);
-Query OK, 1 row affected (0.01 sec)
 
 mysql>  insert into workson values(4,3,9);
-Query OK, 1 row affected (0.00 sec)
 
 
 
